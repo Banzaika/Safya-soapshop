@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    
+}
+/* common styles for header */
+header {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #C15D00;
+    justify-content: space-between;
+}
+.header_section {
+    width: 50%;
+    position: relative;
+}
+
+.natur {
+    font-size: 180%;
+    font-family: 'Inter', sans-serif;
+    margin-left: 5%;
+    color: #3E7D3E;
+    margin-bottom: 5px;
+}
+
+#leftHeader{
+    text-align: left;
+    margin-left: 5%;
+    align-content: center;
+}
+
+#rightHeader{
+    text-align: right;
+    margin-right: 5%;
+    align-content: center;
+}
+
+.icon {
+    max-width: 7%;
+    max-height: auto;
+    margin-right: 5%;
+    opacity: 80%;
+}
+.icon:hover {
+    margin-top: 10px;
+    transition-duration: 0.5s;
+    opacity: 100%;
+}
+.auth-txt {
+    margin-right: 3%;
+    font-size: 150%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+aside {
+    float: left;
+    border-right: #C15D00 2px solid;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+}
+.company-name {
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.safya {
+    width: 60%;
+    height: auto;
+}
+
+.slider-wrapper {
+    width: 100%;
+    margin-top: 0.4%;    
+}
+
+.slider-photo {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #000000;
+}
+
+
+.catalog {
+    font-size: 48px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Категории на главной странице */
+.categories-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 3%;
+}
+
+.category-block {
+    width: 45%;
+    position: relative;
+
+}
+
+.category-photo {
+    width: 100%;
+    position: relative;
+}
+
+.category-title {
+    position: absolute;
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    left: 25px;
+    bottom: 10px;
+    color: #ffffff;
+}
+
+
+/* footer */
+footer {
+    border-top: 2px solid #C15D00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.footer-wrapper {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.yellow-logo {
+    width: 60px;
+    height: 60px;
+}
+
+.contacts-block {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.contact-logos {
+    display: flex;
+    justify-content: space-between;
+}
+.mail {
+    font-size: 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
+.contact-logo {
+    width: 40px;
+    opacity: 80%;
+}
+.contact-logo:hover {
+    opacity: 100%;
+}
+/* footer */

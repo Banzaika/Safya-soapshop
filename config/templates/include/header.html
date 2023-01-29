@@ -1,0 +1,21 @@
+{% load static socialaccount %}
+<header>
+    <div class="header_section" id="leftHeader">
+        <a href="{% url 'home' %}"><img class="logo" src="{% static 'img/logo-green-100x100.svg' %}">
+        <span class="natur">натуральная косметика</span></a>
+    </div>
+    {% if user.is_authenticated %}
+        <div class="header_section" id="rightHeader">
+            <img class="icon" src="{% static 'img/user.png' %}">
+            <img class="icon" src="{% static 'img/cart.png' %}">
+            <a href="{% url 'account_logout' %}"><img class="icon" src="{% static 'img/logout.png' %}"></a>
+        </div>
+    {% else %}
+        <div class="header_section" id="rightHeader">
+            <span class="auth-txt">Войти через:</span>
+            <a href="{% provider_login_url 'vk' %}"><img class="icon" src="{% static 'img/vk-logo.png' %}"><a>
+            <a href="{% provider_login_url 'google' %}"><img class="icon" src="{% static 'img/google-logo.svg' %}"></a>
+        </div>
+    {% endif %}
+</header>
+

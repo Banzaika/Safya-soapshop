@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<aside>
+    {% for category in categories %}
+        {{ category.name }}
+    {% endfor %}
+</aside>
+<main>
+<h3>{{ current_category.name }}</h3>
+{% for product in products %}
+    <div class="prod_container">
+        <img src="{{ product.poster.url }}">
+        <h4>{{ product.name }}</h4>
+        <h5>{{ product.price }}</h5>
+    </div>
+{% endfor %}
+</main>
+{% endblock content %}
+

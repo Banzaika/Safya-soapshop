@@ -1,12 +1,30 @@
-{% extends 'base.html' %}{% load socialaccount %}
-{% block content %}
-    <div class='container'>
-        {% if user.is_authenticated %}
-            <h3>Welcome {{ user.username }}!!!</h3>
-            <a href="{% url 'account_logout' %}">Logout</a>
-        {% else %}
-            <a href="{% provider_login_url 'vk' %}"><button class="btn btn-info">VK</button></a>
-        {% endif %}
-    </div>
-{% endblock content %}
+{% extends 'base.html' %}
+{% load static socialaccount %}
 
+
+{% block content %}
+<main>
+        <div class="main-page-wrapper">
+            <div class="company-name">
+                <img class="safya" src="{% static 'img/Safya.svg' %}">
+            </div>
+
+            <div class="slider-wrapper">
+                <img class="slider-photo" src="{% static 'img/slider-croped.jpeg' %}">
+            </div>
+
+            <span class="catalog">Каталог</span>
+            <div class="categories-wrapper">
+                <div class="category-block">
+                    <img class="category-photo" src="{% static 'img/soap-cat.svg' %}">
+                    <span class="category-title">Мыло</span>
+                </div>
+                <div class="category-block">
+                    <img class="category-photo" src="{% static 'img/shampoo-cat.svg' %}">
+                    <span class="category-title">Шампуни</span>
+                </div>
+            </div>
+            
+        </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>{{ product.name }}</p>
+    <p>{{ product.description }}</p>
+    <p>Цена: {{ product.price }}</p>
+    Состав:
+    {% for component in product.components.all %}
+        <p>{{ component.name }}</p>
+    {% endfor %}
+{% endblock content %}
