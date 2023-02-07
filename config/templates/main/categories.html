@@ -1,19 +1,110 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load static %}
 {% block content %}
-<aside>
-    {% for category in categories %}
-        {{ category.name }}
-    {% endfor %}
-</aside>
-<main>
-<h3>{{ current_category.name }}</h3>
-{% for product in products %}
-    <div class="prod_container">
-        <img src="{{ product.poster.url }}">
-        <h4>{{ product.name }}</h4>
-        <h5>{{ product.price }}</h5>
+<div class="products-list-wrapper">
+    <div class="left-block-inproductslist">
+    <div class="categorylist-header"><p>Категории</p></div>
+        <div class="categorieslist">
+            <span class="category-name">Мыло</span>
+            <span class="category-name">Для волос</span>
+            <span class="category-name">Для тела</span>
+        </div>
     </div>
-{% endfor %}
-</main>
+    <div class="right-block-inproductslist">
+        <div class="current-category-name"><span>Мыло</span></div>
+        <div class="products-list">
+            
+            <div class="product-block">
+                <div class="image-block">
+                    <img class="product-preview" src="{% static 'img/product-preview.jpeg' %}">
+                </div>
+                <div class="product-info">
+                    <div class="txt-info">
+                        <span class="product-title">Бархат</span>
+                        <span class="product-price">₽550</span>
+                    </div>
+                    <div class="side-info">
+                        <span class="optional-cat-title">Мыло</span>
+                        <img class="add2cart" src="{% static 'img/add2cart.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="product-block">
+                <div class="image-block">
+                    <img class="product-preview" src="{% static 'img/product-preview.jpeg' %}">
+                </div>
+                <div class="product-info">
+                    <div class="txt-info">
+                        <span class="product-title">Бархат</span>
+                        <span class="product-price">₽550</span>
+                    </div>
+                    <div class="side-info">
+                        <span class="optional-cat-title">Мыло</span>
+                        <img class="add2cart" src="{% static 'img/add2cart.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="product-block">
+                <div class="image-block">
+                    <img class="product-preview" src="{% static 'img/product-preview.jpeg' %}">
+                </div>
+                <div class="product-info">
+                    <div class="txt-info">
+                        <span class="product-title">Бархат</span>
+                        <span class="product-price">₽550</span>
+                    </div>
+                    <div class="side-info">
+                        <span class="optional-cat-title">Мыло</span>
+                        <img class="add2cart" src="{% static 'img/add2cart.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="product-block">
+                <div class="image-block">
+                    <img class="product-preview" src="{% static 'img/product-preview.jpeg' %}">
+                </div>
+                <div class="product-info">
+                    <div class="txt-info">
+                        <span class="product-title">Бархат</span>
+                        <span class="product-price">₽550</span>
+                    </div>
+                    <div class="side-info">
+                        <span class="optional-cat-title">Мыло</span>
+                        <img class="add2cart" src="{% static 'img/add2cart.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="product-block">
+                <div class="image-block">
+                    <img class="product-preview" src="{% static 'img/product-preview.jpeg' %}">
+                </div>
+                <div class="product-info">
+                    <div class="txt-info">
+                        <span class="product-title">Бархат</span>
+                        <span class="product-price">₽550</span>
+                    </div>
+                    <div class="side-info">
+                        <span class="optional-cat-title">Мыло</span>
+                        <img class="add2cart" src="{% static 'img/add2cart.svg' %}">
+                    </div>
+                </div>
+            </div>
+            <div class="product-block">
+                <div class="image-block">
+                    <img class="product-preview" src="{% static 'img/product-preview.jpeg' %}">
+                </div>
+                <div class="product-info">
+                    <div class="txt-info">
+                        <span class="product-title">Бархат</span>
+                        <span class="product-price">₽550</span>
+                    </div>
+                    <div class="side-info">
+                        <span class="optional-cat-title">Мыло</span>
+                        <img class="add2cart" src="{% static 'img/add2cart.svg' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
 

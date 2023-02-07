@@ -3,13 +3,6 @@
 {% block content %}
     <h3>Войдите через социальные сети:</h3>
     <a href="{% provider_login_url 'vk' %}"><button class="btn btn-info">VK</button></a>
-
-    <div class="hero-content">
-        <div class="hero-links hero-links_73">
-                    <ul class="no-bullet margin-0">
-                        <li class="margin-0"><a href="/netcat_files/multiUpload/Prioritet — specialitetu!.pdf" class="hero__link" tabindex="-1">Подробнее</a></li>
-                    </ul>
-                </div>
-      </div>
+    <a href="{% provider_login_url 'google' %}"><button class="btn btn-info">Google</button></a>
 {% endblock content %}
 

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 from .models import Cart_relation, Product, Category
 from django.contrib.auth.decorators import login_required
 
@@ -12,23 +13,18 @@ def home(request):
     else:
         return render(request, 'home.html')
 
-
-@login_required()
-def products(request):
-    context = {"products": Product.objects.all()}
-    return render(request, 'products.html', context)
-
-
-def categories(request, pk):
-    categories = Category.objects.all()
-    current_category = Category.objects.get(pk=pk)
-    products = Product.objects.filter(category=current_category)
-    context = {"categories": categories,
-               "current_category": current_category, "products": products}
+def category(request, slug):
+    supergroups = {'for-body': (3, 4 , 5), 'for-hair': (2, 6), 'soaps': (1, )}
+    if slug in supergroups:
+        products = Product.objects.filter(category__id__in=supergroups[slug])
+        print(products)
+    else:
+        raise Http404('Такой категории еще нет...')
+    context = {"products": products}
     return render(request, 'main/categories.html', context)
 
 
 def product(request, pk):
     product = Product.objects.get(pk=pk)
-    context = {"product": product}
-    return render(request, "main/product.html", context)
+
+    return render(request, "main/product.html")

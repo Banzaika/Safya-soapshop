@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +11,7 @@ a {
     
 }
 /* common styles for header */
-header {
+/* header {
     display: flex;
     align-items: center;
     border-bottom: 2px solid #C15D00;
@@ -45,18 +46,80 @@ header {
     max-width: 7%;
     max-height: auto;
     margin-right: 5%;
-    opacity: 80%;
+    border-radius: 15px;
+    border: 1px solid #006400;
+    flex: display;
+    justify-content: center;
+    align-items: center;
 }
-.icon:hover {
-    margin-top: 10px;
-    transition-duration: 0.5s;
-    opacity: 100%;
-}
+
 .auth-txt {
     margin-right: 3%;
     font-size: 150%;
     font-family: 'Montserrat', sans-serif;
+} */
+
+/* header2 */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #FA9B29;
+    margin-bottom: 20px;
 }
+.header-wrapper {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.left {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.right {
+    width: 23%;
+    display: flex;
+    flex-direction: space-between;
+    align-items: center;
+}
+
+.natur {
+    font-size: 120%;
+    font-family: 'Inter', sans-serif;
+    color: #3E7D3E;
+    white-space: nowrap;
+    padding-left: 20px;
+}
+
+.icon {
+    height: 40px;
+    width: 40px;
+    border: 1px solid #006400;
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
+.icon:hover {
+    border: 1px solid #FA9B29;
+    transition-duration: 0.4s;
+}
+
+.icon-img-vk {
+    max-width: 27px;
+    max-height: 15px;
+}
+
+.icon-img-google {
+    max-width: 20px;
+}
+
+
+/* header2 */
 
 aside {
     float: left;
@@ -67,6 +130,7 @@ aside {
 main {
     display: flex;
     justify-content: center;
+    min-height: 90vh;
     align-items: center;
 }
 .main-page-wrapper {
@@ -78,7 +142,7 @@ main {
 .company-name {
     display: flex;
     justify-content: center;
-    margin-top: 1%;
+    margin-bottom: 15px;
 }
 
 .safya {
@@ -86,22 +150,39 @@ main {
     height: auto;
 }
 
+/* slider */
+
 .slider-wrapper {
     width: 100%;
-    margin-top: 0.4%;    
+    margin-top: 0.4%;
+    position: relative;    
 }
 
 .slider-photo {
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0 0 10px #000000;
 }
-
-
+.swiper-button-next, .swiper-button-prev{
+    color: #28a128;
+}
+/* slider */
 .catalog {
+    color: black;
     font-size: 48px;
     font-family: 'Montserrat', sans-serif;
 }
+.catalog-link {
+    margin-top: 65px;
+}
+
+.swiper-pagination-bullet{
+    background: #ffffff;
+}
+
+.swiper-pagination-bullet-active{
+    background: white;
+}
+
 
 /* Категории на главной странице */
 .categories-wrapper {
@@ -112,14 +193,23 @@ main {
 }
 
 .category-block {
-    width: 45%;
+    width: 48%;
+    position: relative;
+    margin-bottom: 3%;
+
+}
+
+.category-longblock {
+    width: 100%;
     position: relative;
 
 }
 
 .category-photo {
     width: 100%;
-    position: relative;
+    /* position: relative; */
+    border-radius: 20px;
+    box-shadow: 0 0 10px #000000;
 }
 
 .category-title {
@@ -171,9 +261,144 @@ footer {
 
 .contact-logo {
     width: 40px;
-    opacity: 80%;
+    opacity: 85%;
 }
 .contact-logo:hover {
     opacity: 100%;
 }
 /* footer */
+
+
+
+/*products-list */
+.products-list-wrapper {
+    width: 75%;
+    min-height: 90vh;
+}
+
+
+.left-block-inproductslist {
+    width: 25%;
+    float: left;
+    margin-right: 15px;
+}
+
+.right-block-inproductslist {
+    width: 70%;
+    float: right;
+}
+
+.categorylist-header {
+    min-height: 15vh;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 10px;
+    font-size: 24px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.categorieslist {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-name {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-size: 20px;
+    font-family: 'Montseratt', sans-serif;
+}
+
+/* правая сторона */
+.current-category-name {
+    min-height: 15vh;
+    display: flex;
+    align-items: flex-end;
+
+}
+.current-category-name span {
+    font-size: 60px;
+    font-family: 'Rubik', sans-serif;
+}
+.products-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.product-block {
+    width: 30%;
+    border-radius: 10px;
+    max-width: 200px;
+    margin-right: 3%;
+    margin-bottom: 25px;
+}
+.image-block {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 10px;
+    max-height: 200px;
+    max-width: 200px;
+}
+.product-preview {
+    max-width: 100%;
+    max-height: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.product-info {
+    border: 1px solid #eeeeee;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.txt-info {
+    display: flex;
+    justify-content: space-between;
+}
+.product-title {
+    font-size: 24px;
+    font-family: "Inter", sans-serif;
+    padding-left: 3%;
+}
+.product-price {
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    padding-right: 3%;
+}
+
+.side-info {
+    min-width: 100%;
+    /* display: flex;
+    justify-content: space-between; */
+}
+.add2cart {
+    width: 45%;
+    margin: 0 3% 3% 3%;
+    float: right;
+    
+}
+.optional-cat-title {
+    padding: 5% 3% 0 3%;    
+    font-size: 20px;
+    float: left;
+    font-family: 'Inter', sans-serif;
+}
+
+/* правая сторона  */
+
+/* products-list */
+
+/* product-cart */
+.product-wrapper {
+    width: 75%;
+
+}
+
+
+/* product-cart */

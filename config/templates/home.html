@@ -3,28 +3,46 @@
 
 
 {% block content %}
-<main>
-        <div class="main-page-wrapper">
-            <div class="company-name">
-                <img class="safya" src="{% static 'img/Safya.svg' %}">
-            </div>
 
-            <div class="slider-wrapper">
-                <img class="slider-photo" src="{% static 'img/slider-croped.jpeg' %}">
-            </div>
+<div class="main-page-wrapper">
+    <div class="company-name">
+        <img class="safya" src="{% static 'img/safya.svg' %}">
+    </div>
 
-            <span class="catalog">Каталог</span>
-            <div class="categories-wrapper">
-                <div class="category-block">
-                    <img class="category-photo" src="{% static 'img/soap-cat.svg' %}">
-                    <span class="category-title">Мыло</span>
-                </div>
-                <div class="category-block">
-                    <img class="category-photo" src="{% static 'img/shampoo-cat.svg' %}">
-                    <span class="category-title">Шампуни</span>
-                </div>
+    <div class="slider-wrapper">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img class="slider-photo" src="{% static 'img/slider-croped.jpeg' %}"></div>
+                <div class="swiper-slide"><img class="slider-photo" src="{% static 'img/slider-croped2.jpeg' %}"></div>
             </div>
-            
+            <div class="swiper-pagination"></div>
         </div>
-</main>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <a href="#for-body" class="catalog-link"><span class="catalog">Каталог</span></a>
+    <div class="categories-wrapper">
+        <div class="category-block">
+            <a href="{% url 'categories' 'soaps' %}">
+                <img class="category-photo" src="{% static 'img/soap-cat.svg' %}">
+                <span class="category-title">Мыло</span>
+            </a> 
+        </div>
+        <div class="category-block">
+            <a href="{% url 'categories' 'for-hair' %}">
+                <img class="category-photo" src="{% static 'img/shampoo-cat.svg' %}">
+                <span class="category-title">Для волос</span>
+            </a>
+        </div>
+        <div id="for-body" class="category-longblock">
+            <a href="{% url 'categories' 'for-body' %}">
+                <img class="category-photo" src="{% static 'img/slider-croped2.jpeg' %}">
+                <span class="category-title">Для тела</span>
+            </a>
+        </div>
+    </div>    
+</div>
+
+<script src="{% static 'js/slider.js' %}"></script>
 {% endblock content %}

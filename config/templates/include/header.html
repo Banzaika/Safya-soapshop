@@ -13,7 +13,11 @@
     {% else %}
         <div class="header_section" id="rightHeader">
             <span class="auth-txt">Войти через:</span>
-            <a href="{% provider_login_url 'vk' %}"><img class="icon" src="{% static 'img/vk-logo.png' %}"><a>
+            <a href="{% provider_login_url 'vk' %}">
+                <div class="icon">
+                    <img src="{% static 'img/vk-logo.svg' %}"> 
+                </div>                    
+            <a>
             <a href="{% provider_login_url 'google' %}"><img class="icon" src="{% static 'img/google-logo.svg' %}"></a>
         </div>
     {% endif %}
