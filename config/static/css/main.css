@@ -362,12 +362,12 @@ footer {
     justify-content: space-between;
 }
 .product-title {
-    font-size: 24px;
+    font-size: 20px;
     font-family: "Inter", sans-serif;
     padding-left: 3%;
 }
 .product-price {
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'Inter', sans-serif;
     padding-right: 3%;
 }
@@ -390,6 +390,10 @@ footer {
     font-family: 'Inter', sans-serif;
 }
 
+.products-not-found {
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+}
 /* правая сторона  */
 
 /* products-list */

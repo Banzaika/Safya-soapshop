@@ -15,7 +15,7 @@ class Component(models.Model):
 class Product(models.Model):
     name = models.CharField("Название", max_length=250)
     description = models.TextField("Описание")
-    price = models.DecimalField(verbose_name="Цена", max_digits=7, decimal_places=2)
+    price = models.IntegerField(verbose_name="Цена")
     category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.CASCADE)
     poster = models.ImageField(upload_to="posters/")
     components = models.ManyToManyField(Component, verbose_name="Составляющее")

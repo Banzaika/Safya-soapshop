@@ -1,10 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load static %}
 {% block content %}
-    <p>{{ product.name }}</p>
-    <p>{{ product.description }}</p>
-    <p>Цена: {{ product.price }}</p>
-    Состав:
-    {% for component in product.components.all %}
-        <p>{{ component.name }}</p>
-    {% endfor %}
+    <div class="product-wrapper">
+        <div class="product-review">
+            <span class="title-in-card">Бархат</span>
+            <img class="product-img" src="{% static 'img/product-preview.jpeg' %}">
+        </div>
+        <div class="product-full-info">
+            <div class="main-info">
+                <div class="quantitative-info">
+                    <span class="price">P550</span>
+                    <span class="mass">140G</span>
+                </div>
+                <div class="add2cart-buttons">
+                    <button>Добавить в корзину</button>
+
+                    <button>Перейти в корзину</button>
+                    <button class="minus">-</button>
+                    <span class="count-of-product-in-cart">1</span>
+                    <button class="plus">+</button>
+                </div>
+            </div>
+            <div class="txt-info-in-product-card">
+                <span class="components">Состав:<br>ваниль, лаванда, эквалипт, ананас</span>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
