@@ -16,6 +16,6 @@ admin.site.register(ProductShots)
 
 admin.site.register(Component)
 
-admin.site.register(Cart_relation)
+admin.site.register(Cart)
 
 admin.site.register(Product_for_cart)

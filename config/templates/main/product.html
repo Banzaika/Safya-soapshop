@@ -3,26 +3,38 @@
     <div class="product-wrapper">
         <div class="product-review">
             <span class="title-in-card">Бархат</span>
-            <img class="product-img" src="{% static 'img/product-preview.jpeg' %}">
+            <div class="slider-wrapper">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img class="product-img" src="{% static 'img/product-preview.jpeg' %}"></div>
+                        <div class="swiper-slide"><img class="product-img" src="{% static 'img/product-preview.jpeg' %}"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
         <div class="product-full-info">
             <div class="main-info">
                 <div class="quantitative-info">
-                    <span class="price">P550</span>
-                    <span class="mass">140G</span>
+                    <span class="price">550₽</span>
+                    <span class="mass">140Г</span>
                 </div>
-                <div class="add2cart-buttons">
-                    <button>Добавить в корзину</button>
-
-                    <button>Перейти в корзину</button>
-                    <button class="minus">-</button>
-                    <span class="count-of-product-in-cart">1</span>
-                    <button class="plus">+</button>
+                <div class="add2cart-buttons" id="flexable-div">
+                    <button onclick="switch_element(1);" class="add2cart-in-productcard">Добавить в корзину</button>
                 </div>
             </div>
             <div class="txt-info-in-product-card">
                 <span class="components">Состав:<br>ваниль, лаванда, эквалипт, ананас</span>
+                <span class="description">Мыло обладает легким обезболивающим действием.
+                    Ментол владеет слабым местноанастезирующим свойством, тем самым стимулируя холодовые сенсоры кожи. Эта прохалада  дает чувство легкой свежести и прохлады по всему телу. Используя это мыло перед сном или просто в знойную жару, Вы получите истинную ароматерапию и успокоение.
+                    Если вы занимаетесь спортом, то после купания ментоловым мылом уходит боль в мышцах и спазмы.Холодные нотки эфирного масла мяты успокаивают, расслабляют, тонизируют и освежают, снимают напряжение и усталость. 
+                    Масло мяты способствует улучшению кровообращения и выравнивает цвет кожи.Снижает активность выработки кожного сала, тонизирует и освежает кожу, улучшая цвет лица, устраняет раздражения и покраснения</span>
             </div>
         </div>
     </div>
+    <script src="{% static 'js/slider.js' %}"></script>
+    <script src="{% static 'js/switch-element.js' %}"></script>
+
 {% endblock content %}
