@@ -118,6 +118,9 @@ header {
     max-width: 20px;
 }
 
+.profile-icon {
+    height: 30px;
+}
 
 /* header2 */
 
@@ -130,8 +133,8 @@ aside {
 main {
     display: flex;
     justify-content: center;
-    min-height: 85vh;
-    align-items: center;
+    min-height: 90vh;
+    align-items: flex-start;
 }
 .main-page-wrapper {
     display: flex;
@@ -379,12 +382,12 @@ footer {
     justify-content: space-between;
 }
 .product-title {
-    font-size: 20px;
+    font-size: 18px;
     font-family: "Inter", sans-serif;
     padding-left: 3%;
 }
 .product-price {
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Inter', sans-serif;
     padding-right: 3%;
 }
@@ -527,5 +530,8 @@ footer {
 .count-of-product-in-cart {
     display: inline;
     font-size: 22px;
+}
+.bootstrap-social-icons {
+    margin-left: 15px;
 }
 /* product-cart */

@@ -2,7 +2,7 @@
 
 {% block content %}
     <h3>Войдите через социальные сети:</h3>
-    <a href="{% provider_login_url 'vk' %}"><button class="btn btn-info">VK</button></a>
-    <a href="{% provider_login_url 'google' %}"><button class="btn btn-info">Google</button></a>
+    <a class="bootstrap-social-icons" href="{% provider_login_url 'vk' %}"><button class="btn btn-info">VK</button></a>
+    <a class="bootstrap-social-icons" href="{% provider_login_url 'google' %}"><button class="btn btn-success">Google</button></a>
 {% endblock content %}
 

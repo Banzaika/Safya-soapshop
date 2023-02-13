@@ -21,8 +21,22 @@
                     <span class="price">550₽</span>
                     <span class="mass">140Г</span>
                 </div>
-                <div class="add2cart-buttons" id="flexable-div">
-                    <button onclick="switch_element(1);" class="add2cart-in-productcard">Добавить в корзину</button>
+                <div class="add2cart-buttons">
+                    {% if product_in_cart %}
+                        <button style="display:none;" onclick="add2cart({{ product.id }}, '{{ csrf_token }}');" class="add2cart-in-productcard">Добавить в корзину</button>    
+
+                        <button class="go2cart">Перейти в корзину</button>
+                        <button onclick="minus({{ product.id }}, '{{ csrf_token }}');" class="minus">-</button>
+                        <span class="count-of-product-in-cart">{{ count_of_product_in_cart }}</span>
+                        <button onclick="plus({{ product.id }}, '{{ csrf_token }}');" class="plus">+</button>
+                    {% else %}
+                        <button onclick="add2cart({{ product.id }}, '{{ csrf_token }}');" class="add2cart-in-productcard">Добавить в корзину</button>
+
+                        <button style="display:none;" class="go2cart">Перейти в корзину</button>
+                        <button style="display:none;" onclick="minus({{ product.id }}, '{{ csrf_token }}');" class="minus">-</button>
+                        <span style="display:none;" class="count-of-product-in-cart">1</span>
+                        <button onclick="plus({{ product.id }}, '{{ csrf_token }}');" style="display:none;" class="plus">+</button>
+                    {% endif %}
                 </div>
             </div>
             <div class="txt-info-in-product-card">
