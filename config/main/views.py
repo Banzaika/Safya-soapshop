@@ -38,28 +38,28 @@ def product(request, id):
             count_of_product_in_cart = get_relation_in_cart_of(user, id).amount
     context = {'product_in_cart': product_in_cart, 'product': product, 'count_of_product_in_cart': count_of_product_in_cart}
     return render(request, "main/product.html", context)
+ 
 
+def login_required_without_next(func):
+    """for redirect to login page without next"""
+    def inner(request, *args):
+        if not request.user.is_authenticated:
+            return redirect('account_login')
+        return func(*args)
+    return inner
 
-# def login_required_without_next(func):
-#     def inner():
-#         if not user.is_authenticated:
-#             return redirect('account_login')
-#         func()
-#     return inner
+def cart(request):
+    return render(request, 'main/cart.html')
 
-
-# @login_required к сожалению, мне нужен без якоря ?next
+@login_required_without_next #к сожалению, мне нужен без якоря ?next
 def increase(request):
     """increase count of product in cart """
-    user = request.user
-    if not user.is_authenticated:
-        return redirect('account_login')
-
     product_id = int(request.body.decode("utf-8"))
     increase_product(user, product_id)
     return JsonResponse({"success": 'True'})
 
 
+@login_required_without_next #к сожалению, мне нужен без якоря ?next
 def decrease(request):
     """decrease count of product in cart"""
     user = request.user
@@ -71,6 +71,7 @@ def decrease(request):
     return JsonResponse({"success": 'True'})
 
 
+@login_required_without_next #к сожалению, мне нужен без якоря ?next
 def clear(request):
     """remove product from cart"""
     user = request.user
@@ -80,3 +81,5 @@ def clear(request):
     product_id = int(request.body.decode("utf-8"))
     remove_product_from_cart(user, product_id)
     return JsonResponse({"success": 'True'})
+
+

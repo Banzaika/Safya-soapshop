@@ -9,5 +9,6 @@ urlpatterns = [
     path('cart/increase', views.increase),
     path('cart/decrease', views.decrease),
     path('cart/clear', views.clear),
+    path('cart/', views.cart, name='cart'),
     # path('cart/', views.cart, name='cart'),
 ]
