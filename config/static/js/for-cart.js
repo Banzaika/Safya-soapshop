@@ -104,3 +104,26 @@ function change_checkout_block(){
             checkout_block.style.height = '175px';
         }
 }
+
+function checkout(csrftoken){
+    var checkedBoxes = document.querySelectorAll('input[name="boo"]:checked');
+    var relation_ides = [];
+    for (var i = 0; i < checkedBoxes.length; i++) {
+        relation_ides.push(checkedBoxes[i].value);
+    }
+    console.log(relation_ides);
+    fetch('http://127.0.0.1:8000/cart/checkout'{
+          method: 'POST',
+          redirect: 'follow',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken,
+          },
+          body: relation_ides
+        })
+        .then((data) => {
+          if(data.redirected){
+            location.href = data.url;
+          }
+          });
+}

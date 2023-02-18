@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Product
 from django.contrib.auth.decorators import login_required
-from .orm_questions import get_products_by_supergroup, get_product_ides_in_cart_of, increase_product, decrease_product, remove_product_from_cart, get_relation_in_cart_of, get_cart_of, get_products_in_cart_of
+from .orm_requests import get_products_by_supergroup, get_product_ides_in_cart_of, increase_product, decrease_product, remove_product_from_cart, get_relation_in_cart_of, get_cart_of, get_products_in_cart_of
 
 
 def home(request):
@@ -28,15 +28,19 @@ def category(request, slug):
 
 
 def product(request, id):
+    """Product card"""
     user = request.user
     product = Product.objects.get(id=id)
+
+    components = [component.name for component in product.components.all()]
+    components = ', '.join(components).capitalize()
     count_of_product_in_cart = 0
     product_in_cart = False
     if user.is_authenticated:
         product_in_cart = id in get_product_ides_in_cart_of(user)
         if product_in_cart:
             count_of_product_in_cart = get_relation_in_cart_of(user, id).amount
-    context = {'product_in_cart': product_in_cart, 'product': product, 'count_of_product_in_cart': count_of_product_in_cart}
+    context = {'product_in_cart': product_in_cart, 'product': product, 'count_of_product_in_cart': count_of_product_in_cart, "components": components}
     return render(request, "main/product.html", context)
  
 

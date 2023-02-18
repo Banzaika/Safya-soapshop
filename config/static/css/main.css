@@ -61,6 +61,11 @@ a {
 } */
 
 /* header2 */
+
+#box {
+    max-width: 25px;
+    max-height: 25px;
+}
 header {
     display: flex;
     justify-content: center;
@@ -387,11 +392,13 @@ footer {
     font-size: 18px;
     font-family: "Inter", sans-serif;
     padding-left: 3%;
+    width: 70%;
 }
 .product-price {
     font-size: 18px;
     font-family: 'Inter', sans-serif;
     padding-right: 3%;
+    width: 30%;
 }
 
 .side-info {
@@ -415,7 +422,7 @@ footer {
 
 .optional-cat-title {
     padding: 5% 3% 0 3%;    
-    font-size: 20px;
+    font-size: 14px;
     float: left;
     font-family: 'Inter', sans-serif;
 }

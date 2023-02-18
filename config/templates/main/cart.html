@@ -20,9 +20,9 @@
                 {% for relation in relations %}
                 <div class="product-block-in-cart" id="product-block-{{ relation.product.id }}">
                     <div class="product-block-wrapper">
-                        <input onclick="check(this, {{ relation.product.id }});" type="checkbox" id="{{ relation.product.id }}" name="boo">
+                        <input onclick="check(this, {{ relation.product.id }});" type="checkbox" id="{{ relation.product.id }}" value = {{ relation.id }} name="boo">
                         <label class="product-label" for="{{ relation.product.id }}"></label>
-                        <div class="img-wrapper"><img class="product-preview-in-cart" src="{{ relation.product.poster.url }}"></div>
+                        <div onclick="location.href = '{{ relation.product.get_absolute_url }}'" class="img-wrapper"><img class="product-preview-in-cart" src="{{ relation.product.poster.url }}"></div>
                         <div class="common-info">
                             <div class="name-weight-delete">
                                 <div class="name-weight">
@@ -51,7 +51,7 @@
                         <span class="common-price-txt">Общая стоимость</span>
                         <span class="common-price-with-ruble"><span class="common-price">0</span><span class="ruble-symbol">₽</span></span>
                     </div>
-                    <button class="go2checkout">Перейти к оформлению</button>
+                    <button onclick="checkout({{ csrf_token }});" class="go2checkout">Перейти к оформлению</button>
                     <span class='need2select'>Выберите товары, чтобы перейти к оформлению</span>
                 </div>
             </div>

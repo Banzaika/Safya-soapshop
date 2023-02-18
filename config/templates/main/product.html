@@ -2,12 +2,14 @@
 {% block content %}
     <div class="product-wrapper">
         <div class="product-review">
-            <span class="title-in-card">Бархат</span>
+            <span class="title-in-card">{{ product.name }}</span>
             <div class="slider-wrapper">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img class="product-img" src="{% static 'img/product-preview.jpeg' %}"></div>
-                        <div class="swiper-slide"><img class="product-img" src="{% static 'img/product-preview.jpeg' %}"></div>
+                        <div class="swiper-slide"><img class="product-img" src="{{ product.poster.url }}"></div>
+                        {% for shot in product.shots.all %}
+                            <div class="swiper-slide"><img class="product-img" src="{{ shot.image.url }}" alt="{{ shot.name }}"></div>
+                        {% endfor %}
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -18,33 +20,30 @@
         <div class="product-full-info">
             <div class="main-info">
                 <div class="quantitative-info">
-                    <span class="price">550 ₽</span>
-                    <span class="mass">140Г</span>
+                    <span class="price">{{ product.price }} ₽</span>
+                    <span class="mass">{{ product.weight }}Г</span>
                 </div>
                 <div class="add2cart-buttons">
                     {% if product_in_cart %}
                         <button style="display:none;" onclick="add2cart({{ product.id }}, '{{ csrf_token }}');" class="add2cart-in-productcard">Добавить в корзину</button>    
 
-                        <button class="go2cart">Перейти в корзину</button>
+                        <button onclick="location.href = {% url 'cart' %};" class="go2cart">Перейти в корзину</button>
                         <button onclick="minus({{ product.id }}, '{{ csrf_token }}');" class="minus">-</button>
                         <span class="count-of-product-in-cart">{{ count_of_product_in_cart }}</span>
                         <button onclick="plus({{ product.id }}, '{{ csrf_token }}');" class="plus">+</button>
                     {% else %}
                         <button onclick="add2cart({{ product.id }}, '{{ csrf_token }}');" class="add2cart-in-productcard">Добавить в корзину</button>
 
-                        <button style="display:none;" class="go2cart">Перейти в корзину</button>
+                        <button onclick="location.href = {% url 'cart' %};" style="display:none;" class="go2cart">Перейти в корзину</button>
                         <button style="display:none;" onclick="minus({{ product.id }}, '{{ csrf_token }}');" class="minus">-</button>
-                        <span style="display:none;" class="count-of-product-in-cart">1</span>
+                        <span style="display:none;" class="count-of-product-in-cart">{{ count_of_product_in_cart }}</span>
                         <button onclick="plus({{ product.id }}, '{{ csrf_token }}');" style="display:none;" class="plus">+</button>
                     {% endif %}
                 </div>
             </div>
             <div class="txt-info-in-product-card">
-                <span class="components">Состав:<br>ваниль, лаванда, эквалипт, ананас</span>
-                <span class="description">Мыло обладает легким обезболивающим действием.
-                    Ментол владеет слабым местноанастезирующим свойством, тем самым стимулируя холодовые сенсоры кожи. Эта прохалада  дает чувство легкой свежести и прохлады по всему телу. Используя это мыло перед сном или просто в знойную жару, Вы получите истинную ароматерапию и успокоение.
-                    Если вы занимаетесь спортом, то после купания ментоловым мылом уходит боль в мышцах и спазмы.Холодные нотки эфирного масла мяты успокаивают, расслабляют, тонизируют и освежают, снимают напряжение и усталость. 
-                    Масло мяты способствует улучшению кровообращения и выравнивает цвет кожи.Снижает активность выработки кожного сала, тонизирует и освежает кожу, улучшая цвет лица, устраняет раздражения и покраснения</span>
+                <span class="components">Состав:<br>{{ components }}</span>
+                <span class="description">{{ product.description }}</span>
             </div>
         </div>
     </div>

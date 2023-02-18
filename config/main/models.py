@@ -13,9 +13,9 @@ class Category(models.Model):
         verbose_name_plural = "Категории"
 
 class ProductShots(models.Model):
-    name = models.CharField('Название', max_length=150)
+    name = models.CharField('Название', max_length=150, help_text='Если картинка по какой-то причине не загрузится, то выводится этот текст')
     image = models.ImageField(upload_to='product_shots/')
-    product = models.ForeignKey("Product", verbose_name="Товар", on_delete=models.CASCADE, blank=True, null=True)
+    product = models.ForeignKey("Product", verbose_name="Товар", related_name='shots', on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta: 
         verbose_name = 'Фотография товара'
