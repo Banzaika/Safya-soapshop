@@ -1,6 +1,6 @@
-function switch_element(client) {
-    var svg_img1 = document.querySelector('#add2cart1');
-    var svg_img2 = document.querySelector('#add2cart2');
+function switch_element(client, id) {
+    var svg_img1 = document.querySelector('#add2cart1-' + id);
+    var svg_img2 = document.querySelector('#add2cart2-' + id);
 
     if (client == 1){
         svg_img1.style.display = 'none';
@@ -33,16 +33,16 @@ function change2cart(id, csrftoken, path){
 
 function switch_add(client, id, csrftoken){
     change2cart(id, csrftoken,  'increase');
-    switch_element(client);
+    switch_element(client, id);
 }
 
 function switch_clear(client, id, csrftoken){
   change2cart(id, csrftoken, 'clear');
-  switch_element(client);
+  switch_element(client, id);
 }
 
 
 function switch_remove(client, id, csrftoken){
   change2cart(id, csrftoken, 'decrease');
-  switch_element(client);
+  switch_element(client, id);
 }

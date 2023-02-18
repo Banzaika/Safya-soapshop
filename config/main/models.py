@@ -42,6 +42,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.CASCADE)
     poster = models.ImageField(upload_to="posters/")
     components = models.ManyToManyField(Component, verbose_name="Составляющее")
+    weight = models.PositiveIntegerField('Вес товара', help_text='Указывать в граммах', default=0)
 
     def get_absolute_url(self):
         return reverse("product", kwargs={"id": self.pk})

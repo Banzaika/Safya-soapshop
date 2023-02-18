@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Product
 from django.contrib.auth.decorators import login_required
-from .orm_questions import get_products_by_supergroup, get_product_ides_in_cart_of, increase_product, decrease_product, remove_product_from_cart, get_relation_in_cart_of
+from .orm_questions import get_products_by_supergroup, get_product_ides_in_cart_of, increase_product, decrease_product, remove_product_from_cart, get_relation_in_cart_of, get_cart_of, get_products_in_cart_of
 
 
 def home(request):
@@ -41,25 +41,31 @@ def product(request, id):
  
 
 def login_required_without_next(func):
-    """for redirect to login page without next"""
-    def inner(request, *args):
+    """for redirect to login page without ?next"""
+    def inner(request):
         if not request.user.is_authenticated:
             return redirect('account_login')
-        return func(*args)
+        return func(request)
     return inner
 
-def cart(request):
-    return render(request, 'main/cart.html')
 
-@login_required_without_next #к сожалению, мне нужен без якоря ?next
+@login_required
+def cart(request):
+    relations = get_products_in_cart_of(request.user)
+    context = {"relations": relations}
+    return render(request, 'main/cart.html', context)
+
+@login_required_without_next #я бы мог использовать login_required, но ,к сожалению, мне нужен без якоря ?next
+#потому что пользователь не должен посещать маршрут для этого представления
 def increase(request):
     """increase count of product in cart """
     product_id = int(request.body.decode("utf-8"))
-    increase_product(user, product_id)
+    increase_product(request.user, product_id)
     return JsonResponse({"success": 'True'})
 
 
 @login_required_without_next #к сожалению, мне нужен без якоря ?next
+#потому что пользователь не должен посещать маршрут для этого представления
 def decrease(request):
     """decrease count of product in cart"""
     user = request.user

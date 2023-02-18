@@ -5,6 +5,8 @@ from django.http import Http404
 def get_cart_of(user):
     return Cart_relation.objects.filter(user=user)
 
+def get_products_in_cart_of(user):
+    return Cart_relation.objects.filter(user=user, amount__gt = 0)
 
 def get_relation_in_cart_of(user, id):
     relations = get_cart_of(user)

@@ -1,10 +1,64 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load static %}
 
 {% block title %}Корзина{% endblock title %}
 
 {% block content %}
     <div class="cart-wrapper">
-        
-    </div>
 
+        <div class="cart-title-block">
+            <span class="cart-title">
+                Корзина
+            </span>
+        </div> 
+        {% if relations.count > 0 %}
+        <div class="select2all">
+            <input onclick="toggle(this)" type="checkbox" id='all-box'>
+            <label for="all-box" class="select2all-label">Выбрать все</label>
+        </div>
+        <div class="checkout-and-product-list">
+            <div class="product-list-in-cart">
+                {% for relation in relations %}
+                <div class="product-block-in-cart" id="product-block-{{ relation.product.id }}">
+                    <div class="product-block-wrapper">
+                        <input onclick="check(this, {{ relation.product.id }});" type="checkbox" id="{{ relation.product.id }}" name="boo">
+                        <label class="product-label" for="{{ relation.product.id }}"></label>
+                        <div class="img-wrapper"><img class="product-preview-in-cart" src="{{ relation.product.poster.url }}"></div>
+                        <div class="common-info">
+                            <div class="name-weight-delete">
+                                <div class="name-weight">
+                                    <span class="name">{{ relation.product.name }}</span>
+                                    <span class="weight">{{ relation.product.weight }}Г</span>
+                                </div>
+                                <span onclick="remove({{ relation.product.id }}, '{{ csrf_token }}')" class="delete">Удалить</span>
+                            </div>
+                            <div class="price-plus-minus-platform">
+                                <div class="plus-minus-platform">
+                                    <button onclick="minus({{ relation.product.id }}, '{{ csrf_token }}')" class="minus-in-cart">-</button>
+                                    <span class="count" id="count-of-{{ relation.product.id }}">{{ relation.amount }}</span>
+                                    <button onclick="plus({{ relation.product.id }}, '{{ csrf_token }}')" class="plus-in-cart">+</button>
+                                </div>
+                                <span class="price-in-cart"><span class='price-value-{{ relation.product.id }}'>{{ relation.product.price }}</span> ₽</span>
+                            </div>      
+                        </div>
+                    </div> 
+                </div>
+                {% endfor %}
+            </div>
+            <div class="checkout-block">
+                <div class="checkout-block-wrapper">
+                    <span class="your-cart">Ваша корзина</span>
+                    <div class="common-price-block">
+                        <span class="common-price-txt">Общая стоимость</span>
+                        <span class="common-price-with-ruble"><span class="common-price">0</span><span class="ruble-symbol">₽</span></span>
+                    </div>
+                    <button class="go2checkout">Перейти к оформлению</button>
+                    <span class='need2select'>Выберите товары, чтобы перейти к оформлению</span>
+                </div>
+            </div>
+        </div>
+        {% else %}
+            <span class="empty-cart-info">В вашей корзине ещё нет товаров</span>
+        {% endif %}
+    </div>
+    <script src="{% static 'js/for-cart.js' %}"></script>
 {% endblock content %}

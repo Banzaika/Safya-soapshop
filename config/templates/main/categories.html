@@ -20,20 +20,20 @@
             <div class="product-block">
                 <div class="image-block">
                     <a href="{{ product.get_absolute_url }}">
-                    <img class="product-preview" src="{% static 'img/product-preview.jpeg' %}">
+                    <img class="product-preview" src="{{ product.poster.url }}">
                     </a>
                 </div>
                 <div class="product-info">
                     <div class="txt-info">
                         <span class="product-title">{{ product.name }}</span>
-                        <span class="product-price">₽{{ product.price }}</span>
+                        <span class="product-price">{{ product.price }} ₽</span>
                     </div>
                     <div class="side-info">
                         {% if current_category != 'Мыло' %}
                             <span class="optional-cat-title">{{ product.category.name }}</span>
                         {% endif %}
                         {% if product.id in cart %}
-                        <svg onclick="switch_clear(2, {{ product.id }}, '{{ csrf_token }}');" id="add2cart2" class="add2cart" width="110" height="38" viewBox="0 0 110 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg onclick="switch_clear(2, {{ product.id }}, '{{ csrf_token }}');" id="add2cart2-{{ product.id }}" class="add2cart" width="110" height="38" viewBox="0 0 110 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect class="add2cart-mini-yellow" width="110" height="38" rx="5" fill="#FA9B29"/>
                             <g clip-path="url(#clip0_203_140)">
                             <path d="M93.5 23C93.5 23.2761 93.2761 23.5 93 23.5C92.7239 23.5 92.5 23.2761 92.5 23C92.5 22.7239 92.7239 22.5 93 22.5C93.2761 22.5 93.5 22.7239 93.5 23ZM100 23C100 23.2761 99.7761 23.5 99.5 23.5C99.2239 23.5 99 23.2761 99 23C99 22.7239 99.2239 22.5 99.5 22.5C99.7761 22.5 100 22.7239 100 23Z" fill="white" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
@@ -46,7 +46,7 @@
                             </clipPath>
                             </defs>
                         </svg>
-                        <svg onclick="switch_add(1, {{ product.id }}, '{{csrf_token}}');" id="add2cart1" class="add2cart" style="display:none;" width="110" height="38" viewBox="0 0 110 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg onclick="switch_add(1, {{ product.id }}, '{{csrf_token}}');" id="add2cart1-{{ product.id }}" class="add2cart" style="display:none;" width="110" height="38" viewBox="0 0 110 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect class="add2cart-mini-green" width="110" height="38" rx="5" fill="#54B854"/>
                             <g clip-path="url(#clip0_148_317)">
                                 <path d="M96 25C96 25.2761 95.7761 25.5 95.5 25.5C95.2239 25.5 95 25.2761 95 25C95 24.7239 95.2239 24.5 95.5 24.5C95.7761 24.5 96 24.7239 96 25ZM89.5 25C89.5 25.2761 89.2761 25.5 89 25.5C88.7239 25.5 88.5 25.2761 88.5 25C88.5 24.7239 88.7239 24.5 89 24.5C89.2761 24.5 89.5 24.7239 89.5 25Z" fill="white" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
@@ -60,7 +60,7 @@
                             </defs>
                         </svg>
                         {% else %}
-                        <svg onclick="switch_clear(2, {{ product.id }}, '{{ csrf_token }}');" id="add2cart2" class="add2cart" style="display:none;" width="110" height="38" viewBox="0 0 110 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg onclick="switch_clear(2, {{ product.id }}, '{{ csrf_token }}');" id="add2cart2-{{ product.id }}" class="add2cart" style="display:none;" width="110" height="38" viewBox="0 0 110 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect class="add2cart-mini-yellow" width="110" height="38" rx="5" fill="#FA9B29"/>
                             <g clip-path="url(#clip0_203_140)">
                             <path d="M93.5 23C93.5 23.2761 93.2761 23.5 93 23.5C92.7239 23.5 92.5 23.2761 92.5 23C92.5 22.7239 92.7239 22.5 93 22.5C93.2761 22.5 93.5 22.7239 93.5 23ZM100 23C100 23.2761 99.7761 23.5 99.5 23.5C99.2239 23.5 99 23.2761 99 23C99 22.7239 99.2239 22.5 99.5 22.5C99.7761 22.5 100 22.7239 100 23Z" fill="white" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
@@ -73,7 +73,7 @@
                             </clipPath>
                             </defs>
                         </svg>
-                        <svg onclick="switch_add(1, {{ product.id }}, '{{csrf_token}}');" id="add2cart1" class="add2cart" width="110" height="38" viewBox="0 0 110 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg onclick="switch_add(1, {{ product.id }}, '{{csrf_token}}');" id="add2cart1-{{ product.id }}" class="add2cart" width="110" height="38" viewBox="0 0 110 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect class="add2cart-mini-green" width="110" height="38" rx="5" fill="#54B854"/>
                             <g clip-path="url(#clip0_148_317)">
                                 <path d="M96 25C96 25.2761 95.7761 25.5 95.5 25.5C95.2239 25.5 95 25.2761 95 25C95 24.7239 95.2239 24.5 95.5 24.5C95.7761 24.5 96 24.7239 96 25ZM89.5 25C89.5 25.2761 89.2761 25.5 89 25.5C88.7239 25.5 88.5 25.2761 88.5 25C88.5 24.7239 88.7239 24.5 89 24.5C89.2761 24.5 89.5 24.7239 89.5 25Z" fill="white" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>

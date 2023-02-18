@@ -7,7 +7,7 @@
     {% if user.is_authenticated %}
         <div class="header_section" id="rightHeader">
             <img class="icon" src="{% static 'img/user.png' %}">
-            <img class="icon" src="{% static 'img/cart.png' %}">
+            <a href="{% url 'cart' %}"><img class="icon" src="{% static 'img/cart.png' %}"></a>
             <a href="{% url 'account_logout' %}"><img class="icon" src="{% static 'img/logout.png' %}"></a>
         </div>
     {% else %}
