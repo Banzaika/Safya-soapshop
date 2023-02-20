@@ -92,4 +92,11 @@ def clear(request):
     remove_product_from_cart(user, product_id)
     return JsonResponse({"success": 'True'})
 
+def checkout(request):
+    relation_ides = request.body.decode('utf-8').split(',')
+    print(relation_ides)
+    
+    return JsonResponse({"success": 'True'})
 
+def ordering(request):
+    return render(request, 'main/checkout.html')

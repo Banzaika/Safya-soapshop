@@ -1,0 +1,25 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}Оформление заказа{% endblock title %}
+{% block content %}
+    <div class="checkout-wrapper">
+        <h2 class="order-title">Оформление заказа</h2>
+
+        <div class="form-wrapper">
+        <form action="">
+            <!-- <span>Фамилия Имя Отчество</span><br> -->
+            <div class="fio-wrapper">
+                <input maxlength="150" class="order_field" type="NAME_LAST" placeholder="Фамилия" name="surname">
+                <input maxlength="150" class="order_field" type="NAME_FIRST" placeholder="Имя" name="firstname">
+                <input maxlength="150" class="order_field" type="NAME_MIDDLE" placeholder="Отчество" name="patronymic">
+            </div>
+            <div class="tel-address-wrapper">
+                <input minlength="11" maxlength="12" class="order_field" type="tel" placeholder="Телефон">
+                <input class="order_field" type="text" placeholder="Адрес" id="address" name='address'>
+            </div>
+            <input class="order_field" type="ADDRESS_HOME_ZIP" placeholder="Индекс" name="ADDRESS_HOME_ZIP"><br>
+            <button class="checkout-btn" type="submit">Перейти к оплате</button>
+        </form>
+        </div>
+    </div>
+    <script src="{% static 'js/for-checkout.js' %}"></script>
+{% endblock content %}

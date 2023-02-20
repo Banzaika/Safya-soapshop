@@ -10,5 +10,7 @@ urlpatterns = [
     path('cart/decrease', views.decrease),
     path('cart/clear', views.clear),
     path('cart/', views.cart, name='cart'),
+    path('cart/checkout', views.checkout, name='checkout'),
+    path('cart/ordering', views.ordering, name='ordering'),
     # path('cart/', views.cart, name='cart'),
 ]

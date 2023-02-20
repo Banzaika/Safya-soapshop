@@ -51,7 +51,7 @@
                         <span class="common-price-txt">Общая стоимость</span>
                         <span class="common-price-with-ruble"><span class="common-price">0</span><span class="ruble-symbol">₽</span></span>
                     </div>
-                    <button onclick="checkout({{ csrf_token }});" class="go2checkout">Перейти к оформлению</button>
+                    <button onclick="checkout('{{ csrf_token }}');" class="go2checkout">Перейти к оформлению</button>
                     <span class='need2select'>Выберите товары, чтобы перейти к оформлению</span>
                 </div>
             </div>
