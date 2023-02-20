@@ -86,10 +86,15 @@ header {
     justify-content: space-between;
 }
 .right {
-    width: 30%;
+    width: 40%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.auth-txt {
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
 }
 
 .natur {
@@ -117,8 +122,8 @@ header {
 }
 
 .icon-img-vk {
-    max-width: 67.5%;
-    max-height: 37.5%;
+    width: 67.5%;
+    height: 37.5%;
 }
 
 .icon-img-google {
@@ -264,18 +269,16 @@ footer {
     justify-content: space-between;
 }
 .mail {
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Montserrat';
     font-style: normal;
 }
 
 .contact-logo {
     width: 40px;
-    opacity: 85%;
+    height: 40px;
 }
-.contact-logo:hover {
-    opacity: 100%;
-}
+
 /* footer */
 
 
@@ -864,7 +867,7 @@ input[type="checkbox"]:checked + label::before {
 .form-wrapper {
     background-color: #f2f5f9;
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     border-radius: 15px;
 }
 .fio-wrapper {
@@ -1024,7 +1027,7 @@ input[type="checkbox"]:checked + label::before {
 }
 
 .cart-title {
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .select2all-label {
@@ -1067,17 +1070,48 @@ input[type="checkbox"]:checked + label::before {
 }
 
 .your-cart {
-    font-size: 35px;
+    font-size: 45px;
 }
 
 .checkout-block {
-    width: 400px;
+    width: 100%;
     min-height: 200px;
 }
 
-.common-price-with-ruble, .common-price-txt {
-    font-size: 22px;
+.go2checkout {
+    min-height: 70px;
+    font-size: 40px;
+    border-radius: 20px;
 }
+
+.common-price-with-ruble, .common-price-txt {
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* cart */
 
@@ -1094,20 +1128,104 @@ input[type="checkbox"]:checked + label::before {
 
 .order_field {
     height: 80px;
-    font-size: 30px;
-}
-
-
-
-.order-title {
-    font-size: 40px;
+    font-size: 35px;
+    width: 100%;
 }
 
 .checkout-btn {
     width: 100%;
     font-size: 40px;
 }
+
+.fio-wrapper {
+    flex-direction: column;
+}
+
+.order-title {
+    font-size: 55px;
+}
+.tel-address-wrapper {
+    flex-direction: column;
+}
+#address {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ordering-adaptive */
+
+/* adaptive-footer */
+
+.yellow-logo {
+    width: 90px;
+    height: 90px;
+}
+
+.mail {
+    font-size: 30px;
+}
+
+.contact-logo {
+    width: 60px;
+    height: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* adaptive-footer */
+
+
 
 }
 

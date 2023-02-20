@@ -37,7 +37,7 @@ def get_products_by_supergroup(slug):
     if slug in supergroups:
         products = Product.objects.filter(category__id__in=supergroups[slug])
     else:
-        raise Http404('Такой категории еще нет...')
+        raise Http404()
     return products
 
 
@@ -75,6 +75,9 @@ def remove_product_from_cart(user, id):
         relation.save()
 
 
+
+def get_relations_by_ides_of_(user, ides):
+    return Cart_relation.objects.filter(user=user, id__in=ides)
 # def change_cart(user, move, id):
 #     product_ides = get_product_ides_in_cart_of(user)
 #     #increase count of product in cart of user

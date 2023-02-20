@@ -4,6 +4,7 @@ function toggle(source){
         checkboxes[i].checked = source.checked;
     }
     change_checkout_block();
+    change_common_price();
 }
 
 

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Product
 from django.contrib.auth.decorators import login_required
-from .orm_requests import get_products_by_supergroup, get_product_ides_in_cart_of, increase_product, decrease_product, remove_product_from_cart, get_relation_in_cart_of, get_cart_of, get_products_in_cart_of
+from .orm_requests import get_products_by_supergroup, get_product_ides_in_cart_of, increase_product, decrease_product, remove_product_from_cart, get_relation_in_cart_of, get_cart_of, get_products_in_cart_of, get_relations_by_ides_of_
 
 
 def home(request):
@@ -94,9 +94,18 @@ def clear(request):
 
 def checkout(request):
     relation_ides = request.body.decode('utf-8').split(',')
-    print(relation_ides)
-    
-    return JsonResponse({"success": 'True'})
+    request.session['relation_ides'] = relation_ides
+    return redirect('ordering')
+
 
 def ordering(request):
+    relation_ides = request.session['relation_ides']
+    print('ordering ' + str(relation_ides))
     return render(request, 'main/checkout.html')
+
+def pay(request):
+    relation_ides = []
+    if 'relation_ides' in request.session.keys():
+        relation_ides = request.session['relation_ides']
+        print(relation_ides)
+    return redirect('home')

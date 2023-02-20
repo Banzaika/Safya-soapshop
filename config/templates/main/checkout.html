@@ -5,12 +5,12 @@
         <h2 class="order-title">Оформление заказа</h2>
 
         <div class="form-wrapper">
-        <form action="">
-            <!-- <span>Фамилия Имя Отчество</span><br> -->
+        <form action="{% url 'pay' %}" method='POST'>
+            {% csrf_token %}
             <div class="fio-wrapper">
-                <input maxlength="150" class="order_field" type="NAME_LAST" placeholder="Фамилия" name="surname">
-                <input maxlength="150" class="order_field" type="NAME_FIRST" placeholder="Имя" name="firstname">
-                <input maxlength="150" class="order_field" type="NAME_MIDDLE" placeholder="Отчество" name="patronymic">
+                <input minlength="2" maxlength="150" class="order_field fio" type="NAME_LAST" placeholder="Фамилия" name="surname">
+                <input minlength="2" maxlength="150" class="order_field fio" type="NAME_FIRST" placeholder="Имя" name="firstname">
+                <input minlenth='2' maxlength="150" class="order_field fio" type="NAME_MIDDLE" placeholder="Отчество" name="patronymic">
             </div>
             <div class="tel-address-wrapper">
                 <input minlength="11" maxlength="12" class="order_field" type="tel" placeholder="Телефон">
@@ -21,5 +21,4 @@
         </form>
         </div>
     </div>
-    <script src="{% static 'js/for-checkout.js' %}"></script>
 {% endblock content %}
