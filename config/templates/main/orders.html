@@ -1,0 +1,41 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}Мои заказы{% endblock title %}
+{% block content %}
+<div class="orders-wrapper">
+        {% if orders.count > 0 %}
+        <span class="my-orders">Заказы</span>
+        <div class="orders-list">
+            {% for order in orders %}
+            <div class="order-block">
+                <span class="fio-in-orders">{{ order.lastname }} {{ order.name }} {{order.patronymic}}</span><br>
+                <span class="number-postcode">{{ order.phone }}, {{ order.postcode }}</span><br>
+                <span class="address-in-orders">{{ order.street_address }}</span><br>
+                <span class="status">Статус: {{ order.get_status }}</span><br>
+                {% if order.track_number %}
+                <span class="status">Трек номер: {{ order.track_number }}</span><br>
+                {% endif %}
+                <span class="price-in-orders">Итоговая цена: {{order.common_price}}₽</span>
+                
+                <div class="product-list-in-orders">
+                    {% for relation in order.order_relations.all %}
+                        <div class="product-block-in-orders">
+                            <img onclick="location.href='{{ relation.product.get_absolute_url }}';" class="product-image-in-orders" src="{{ relation.product.poster.url }}" alt="">
+                            <div class="name-amount">
+                                <span class="product-title-in-orders">{{ relation.product.name }}</span>
+                                <span class="amount">{{ relation.amount }}шт.</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if order.status == 'b' %}
+                    <button onclick='confirm2order(this, {{ order.id }}, "{{ csrf_token }}");' class="btn btn-success">Подтвердить получение</button>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>    
+        {% else %}
+        <span class="my-orders">У вас ещё нет заказов</span>
+        {% endif %}
+</div>
+<script src='{% static "js/for-orders.js" %}'></script>
+{% endblock content %}

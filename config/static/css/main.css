@@ -9,8 +9,8 @@
 }
 a {
     text-decoration: none;
-    
 }
+
 /* common styles for header */
 /* header {
     display: flex;
@@ -118,7 +118,8 @@ header {
 }
 .icon:hover {
     border: 1px solid #FA9B29;
-    transition-duration: 0.4s;
+    transition-duration: 0.4s, 0.4s;
+    transition-property: border;
 }
 
 .icon-img-vk {
@@ -252,7 +253,23 @@ footer {
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    position: relative;
 }
+
+.info-about-us {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.creator-name-link {
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    color:#000000;
+    line-height: 1.25;
+}
+
 .yellow-logo {
     width: 60px;
     height: 60px;
@@ -266,7 +283,8 @@ footer {
 
 .contact-logos {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+
 }
 .mail {
     font-size: 16px;
@@ -277,6 +295,7 @@ footer {
 .contact-logo {
     width: 40px;
     height: 40px;
+    margin-right: 35px;
 }
 
 /* footer */
@@ -880,6 +899,106 @@ input[type="checkbox"]:checked + label::before {
 }
 /* checkout */
 
+/* orders */
+.orders-wrapper {
+    width: 75%;
+}
+
+.my-orders {
+    font-size: 35px;
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 45px;
+}
+.orders-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-block {
+    border: 1px solid #F1F4F2;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.fio-in-orders {
+    font-size: 25px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.number-postcode {
+    font-size: 25px;
+    font-family: 'Inter', sans-serif;
+}
+
+.address-in-orders {
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+}
+
+.price-in-orders {
+    font-size: 22px;
+    font-family: "Rubik", sans-serif;
+}
+.status {
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+}
+
+.product-list-in-orders {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.product-image-in-orders {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.product-block-in-orders {
+    max-width: 30%;
+    margin-right: 3.3%;
+}
+
+.name-amount {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 1px solid #f1f4f2;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    min-height: 90px;
+    margin-bottom: 20px;
+}
+
+.product-title-in-orders {
+    font-size: 22px;
+    font-family: 'Montseratt', sans-serif;
+}
+
+.amount {
+    font-size: 20px;
+    font-family: 'Montseratt', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* orders */
+
 @media screen and (min-width:100px) and (max-width:1200px) {
 
 /* adaptive-layout */
@@ -1150,45 +1269,12 @@ input[type="checkbox"]:checked + label::before {
 #address {
     width: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ordering-adaptive */
 
 /* adaptive-footer */
+.footer-wrapper {
+    width: 90%;
+}
 
 .yellow-logo {
     width: 90px;
@@ -1200,8 +1286,47 @@ input[type="checkbox"]:checked + label::before {
 }
 
 .contact-logo {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+}
+
+.info-about-us {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.creator-name-link {
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+    color:#000000;
+    line-height: 1.25;
+}
+
+
+/* adaptive-footer */
+
+/* adaptive-orders */
+.orders-wrapper {
+    width: 90%;
+}
+
+.my-orders {
+    font-size: 55px;
+}
+
+.fio-in-orders {
+    font-size: 40px;
+}
+
+.number-postcode {
+    font-size: 35px;
+}
+
+.address-in-orders, .status, .price-in-orders {
+    font-size: 32px;
 }
 
 
@@ -1211,21 +1336,7 @@ input[type="checkbox"]:checked + label::before {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* adaptive-footer */
-
-
+/* adaptive-orders */
 
 }
 

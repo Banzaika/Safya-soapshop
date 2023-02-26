@@ -13,5 +13,9 @@ urlpatterns = [
     path('cart/checkout', views.checkout, name='checkout'),
     path('cart/ordering', views.ordering, name='ordering'),
     path('pay', views.pay, name='pay'),
-    # path('cart/', views.cart, name='cart'),
+    path('orders', views.orders, name='orders'),
+    path('about-shop', views.about_shop, name='about-shop'),
+    path('delivery_confirmation', views.delivery_confirmation),
+    path('notifications_from_yookassa', views.notifications),
+    path('new_orders', views.new_orders)
 ]

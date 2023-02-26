@@ -1,6 +1,6 @@
-from .models import Cart_relation, Product, Category
+from .models import Cart_relation, Product, Order, Order_relation
 from django.http import Http404
-
+from django.db.models import Sum
 
 def get_cart_of(user):
     return Cart_relation.objects.filter(user=user)
@@ -47,7 +47,6 @@ def increase_product(user, id):
     if id in product_ides:
         relation = get_relation_in_cart_of(user, id)
         relation.amount += 1
-        print('increase')
         relation.save()
     else:
         product = Product.objects.get(id=id)
@@ -62,7 +61,6 @@ def decrease_product(user, id):
         amount = relation.amount
         if amount > 0:
             relation.amount -= 1
-            print('decrease')
             relation.save()
 
 
@@ -71,38 +69,56 @@ def remove_product_from_cart(user, id):
     if id in product_ides:
         relation = get_relation_in_cart_of(user, id)
         relation.amount = 0
-        print('remove')
         relation.save()
 
 
 
-def get_relations_by_ides_of_(user, ides):
+def get_cart_relations_by_ides_of_(user, ides):
     return Cart_relation.objects.filter(user=user, id__in=ides)
-# def change_cart(user, move, id):
-#     product_ides = get_product_ides_in_cart_of(user)
-#     #increase count of product in cart of user
-#     if move == 1:
-#         if id in product_ides:
-#             relation = get_relation_in_cart_of(user, id)
-#             relation.amount += 1
-#             relation.save()
-#         else:
-#             product = Product.objects.get(id=id)
-#             Cart_relation.objects.create(user=user, product=product, amount=1)
 
-#     #decrease count of product in cart of user
-#     elif move == -1:
-#         if id in product_ides:
-#             relation = get_relation_in_cart_of(user, id)
-#             amount = relation.amount
-#             if amount > 0:
-#                 relation.amount -= 1
-#                 print('decrease')
-#                 relation.save()
-#     #remove product from cart of user
-#     else:
-#         if id in product_ides:
-#             relation = get_relation_in_cart_of(user, id)
-#             relation.amount = 0
-#             print("clear")
-#             relation.save()
+def summing_of_prices_in_cart(relations):
+    result = 0
+    for relation in relations:
+        result += relation.amount * relation.product.price
+    return result
+
+def create_order(lastname, firstname, patronymic, postcode, address, phone, user, relations):
+    common_price = summing_of_prices_in_cart(relations)
+    order = Order.objects.create(user=user, lastname=lastname, name=firstname, patronymic=patronymic, phone=phone, street_address=address, postcode=postcode, common_price=common_price)
+    return order
+
+def create_order_relation(user, product, amount, order):
+    Order_relation.objects.create(user=user, product=product, amount=amount, order_pack=order)
+
+def create_order_relations(user, order, cart_relations):
+    for cart_relation in cart_relations:
+        product = cart_relation.product
+        amount = cart_relation.amount
+        create_order_relation(user, product, amount, order)
+
+def get_orders_of(user):
+    return Order.objects.filter(user=user, paid=True).order_by('status')
+
+def get_new_paid_orders():
+    orders = Order.objects.filter(paid=True, new=True)
+    for order in orders:
+        order.new = False
+        order.save()
+    return orders
+
+def confirm_to_order_delivery(user, order_id):
+    order = Order.objects.get(id=order_id, user=user)
+    if order:
+        order.status = 'c'
+        order.save()
+        return True
+    return False
+
+def change_paid_status_from_order(id):
+    order = Order.objects.get(payment_id=id)
+    order.paid = True
+    order.save()
+
+def delete2order(payment_id):
+    Order.objects.get(payment_id=payment_id).delete()
+    print('end')

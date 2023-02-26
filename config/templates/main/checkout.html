@@ -8,16 +8,16 @@
         <form action="{% url 'pay' %}" method='POST'>
             {% csrf_token %}
             <div class="fio-wrapper">
-                <input minlength="2" maxlength="150" class="order_field fio" type="NAME_LAST" placeholder="Фамилия" name="surname">
-                <input minlength="2" maxlength="150" class="order_field fio" type="NAME_FIRST" placeholder="Имя" name="firstname">
-                <input minlenth='2' maxlength="150" class="order_field fio" type="NAME_MIDDLE" placeholder="Отчество" name="patronymic">
+                <input required minlength="2" maxlength="150" class="order_field fio" type="NAME_LAST" placeholder="Фамилия" name="lastname">
+                <input required minlength="2" maxlength="150" class="order_field fio" type="NAME_FIRST" placeholder="Имя" name="firstname">
+                <input required minlength='2' maxlength="150" class="order_field fio" type="NAME_MIDDLE" placeholder="Отчество" name="patronymic">
             </div>
             <div class="tel-address-wrapper">
-                <input minlength="11" maxlength="12" class="order_field" type="tel" placeholder="Телефон">
-                <input class="order_field" type="text" placeholder="Адрес" id="address" name='address'>
+                <input required minlength="11" class="order_field" type="tel" placeholder="Телефон" name='phone'>
+                <input required minlength="11" class="order_field" type="text" placeholder="Адрес" id="address" name='address'>
             </div>
-            <input class="order_field" type="ADDRESS_HOME_ZIP" placeholder="Индекс" name="ADDRESS_HOME_ZIP"><br>
-            <button class="checkout-btn" type="submit">Перейти к оплате</button>
+            <input required inputmode="numeric" class="order_field" type="ADDRESS_HOME_ZIP" placeholder="Индекс" name="ADDRESS_HOME_ZIP"><br>
+            <button  class="checkout-btn" type="submit">Перейти к оплате</button>
         </form>
         </div>
     </div>

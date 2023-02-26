@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static socialaccount %}
 
-{% block title %}Главная | SAFYA{% endblock title %}
+{% block title %}Главная | SAFIYA{% endblock title %}
 {% block content %}
 
 <div class="main-page-wrapper">
@@ -12,14 +12,19 @@
     <div class="slider-wrapper">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img class="slider-photo" src="{% static 'img/slider-croped.jpeg' %}"></div>
-                <div class="swiper-slide"><img class="slider-photo" src="{% static 'img/slider-croped2.jpeg' %}"></div>
+                <div class="swiper-slide"><img class="slider-photo" src="{% static 'img/slider1.jpeg' %}"></div>
+                <div class="swiper-slide"><img class="slider-photo" src="{% static 'img/slider2.svg' %}"></div>
+                <div class="swiper-slide"><img class="slider-photo" src="{% static 'img/slider3.svg' %}"></div>
+                <div class="swiper-slide"><img class="slider-photo" src="{% static 'img/slider4.jpeg' %}"></div>
+                <div class="swiper-slide"><img class="slider-photo" src="{% static 'img/slider5.svg' %}"></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
+    <script src="{% static 'js/slider.js' %}"></script>
+
 
     <a href="#for-body" class="catalog-link"><span class="catalog">Каталог</span></a>
     <div class="categories-wrapper">
@@ -31,18 +36,17 @@
         </div>
         <div class="category-block">
             <a href="{% url 'categories' 'for-hair' %}">
-                <img class="category-photo" src="{% static 'img/shampoo-cat.svg' %}">
+                <img class="category-photo" src="{% static 'img/for-hear.svg' %}">
                 <span class="category-title">Для волос</span>
             </a>
         </div>
         <div id="for-body" class="category-longblock">
             <a href="{% url 'categories' 'for-body' %}">
-                <img class="category-photo" src="{% static 'img/slider-croped2.jpeg' %}">
+                <img class="category-photo" src="{% static 'img/for-body.svg' %}">
                 <span class="category-title">Для тела</span>
             </a>
         </div>
     </div>    
 </div>
 
-<script src="{% static 'js/slider.js' %}"></script>
 {% endblock content %}
