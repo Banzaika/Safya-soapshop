@@ -12,7 +12,7 @@ change_checkout_block()
 change_common_price();
 
 function change2cart(id, csrftoken, path){
-    fetch('https://f18b-31-130-148-166.eu.ngrok.io/cart/' + path, {
+    fetch('http://127.0.0.1:8000/cart/' + path, {
           method: 'POST',
           redirect: 'follow',
           headers: {
@@ -116,7 +116,7 @@ function checkout(csrftoken){
         relation_ides.push(checkedBoxes[i].value);
     }
     console.log(relation_ides);
-    fetch('https://f18b-31-130-148-166.eu.ngrok.io/cart/checkout',{
+    fetch('http://127.0.0.1:8000/cart/checkout',{
           method: 'POST',
           redirect: 'follow',
           headers: {
