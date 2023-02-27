@@ -104,7 +104,8 @@ celerybeat.pid
 .env
 .venv
 env/
-.banzai_venv
+.banzai_env/
+banzai_env/
 venv/
 ENV/
 env.bak/
