@@ -63,13 +63,24 @@ function remove(id, csrftoken){
 }
 
 
+function change2maincheckbox(){
+    let checkedBoxes = document.querySelectorAll('input[name="boo"]:checked');
+    let allboxes = document.querySelectorAll('input[name="boo"]');
+    let main_checkbox = document.querySelector('#all-box');
+    if (allboxes.length == checkedBoxes.length){
+        console.log("hui");
+        main_checkbox.checked = true;
+    }
+}
+
 function check(checkbox,id){
     // toggle all-box checkbox
     if (!checkbox.checked){
         document.querySelector('#all-box').checked = false;
     }
-    change_checkout_block()
+    change_checkout_block();
     change_common_price();
+    change2maincheckbox();
 }
 
 function change_common_price() {
