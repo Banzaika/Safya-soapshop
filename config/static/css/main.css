@@ -1376,7 +1376,10 @@ input[type="checkbox"]:checked + label::before {
 
 /* adaptive-about-shop */
 
-
+.info-about-shop {
+    width: 90%;
+    font-size: 30px;
+}
 
 
 
