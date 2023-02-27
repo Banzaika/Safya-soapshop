@@ -888,6 +888,7 @@ input[type="checkbox"]:checked + label::before {
     width: 100%;
     padding: 15px;
     border-radius: 15px;
+    margin-bottom: 25px;
 }
 .fio-wrapper {
     display: flex;
@@ -984,7 +985,39 @@ input[type="checkbox"]:checked + label::before {
     font-family: 'Montseratt', sans-serif;
 }
 
+.offerta-confirm {
+    font-size: 16px;
+    font-family: 'Montseratt', sans-serif;
+}
+/* about-shop */
 
+.info-about-shop {
+    width: 75%;
+    font-family: 'Montseratt', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* about-shop */
 
 
 
@@ -1334,9 +1367,29 @@ input[type="checkbox"]:checked + label::before {
 
 
 
-
+.offerta-confirm {
+    font-size: 26px;
+}
 
 /* adaptive-orders */
+
+
+/* adaptive-about-shop */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* adaptive-about-shop */
 
 }
 
