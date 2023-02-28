@@ -43,6 +43,7 @@ class Product(models.Model):
     poster = models.ImageField(upload_to="posters/")
     components = models.ManyToManyField(Component, verbose_name="Составляющее")
     weight = models.PositiveIntegerField('Вес товара', help_text='Указывать в граммах', default=0)
+    amount = models.IntegerField('Количество в наличии', default=1)
 
     def get_absolute_url(self):
         return reverse("product", kwargs={"id": self.pk})

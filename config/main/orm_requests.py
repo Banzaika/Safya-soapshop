@@ -35,7 +35,7 @@ def get_product_ides_in_cart_relations_of(user):
 def get_products_by_supergroup(slug):
     supergroups = {'for-body': (3, 4, 5), 'for-hair': (2, 6), 'soaps': (1,)}
     if slug in supergroups:
-        products = Product.objects.filter(category__id__in=supergroups[slug])
+        products = Product.objects.filter(category__id__in=supergroups[slug], amount__gt=0)
     else:
         raise Http404()
     return products
@@ -122,3 +122,10 @@ def change_paid_status_from_order(id):
 def delete2order(payment_id):
     Order.objects.get(payment_id=payment_id).delete()
     print('end')
+
+def decrease_amount_of_products(payment_id):
+    order = Order.objects.get(payment_id=payment_id)
+    order_relations = order.order_relations.all()
+    for relation in order_relations:
+        relation.product.amount -= relation.amount
+        relation.product.save()

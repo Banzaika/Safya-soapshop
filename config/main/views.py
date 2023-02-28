@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from .models import Product
+from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.middleware.csrf import get_token
 from .orm_requests import get_products_by_supergroup, get_product_ides_in_cart_of, increase_product, decrease_product, remove_product_from_cart, get_relation_in_cart_of, get_products_in_cart_of, get_cart_relations_by_ides_of_
@@ -40,7 +41,9 @@ def product(request, id):
     """Product card"""
     user = request.user
     product = Product.objects.get(id=id)
-
+    if product.amount < 1:
+        raise Http404()
+    
     components = [component.name for component in product.components.all()]
     components = ', '.join(components).capitalize()
     count_of_product_in_cart = 0
