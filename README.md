@@ -3,7 +3,7 @@
     <img src="https://skillicons.dev/icons?i=py,django,js,html,css,figma,ps,nginx,linux,postgres" />
   </a>
 </p>
-<a href="https://safiya-mylo.ru"><h1>Онлайн-магазин для натуральной Handmade косметики<h1></a>
+<a href="https://safiya-mylo.ru"><h2>Онлайн-магазин для натуральной Handmade косметики</h2></a>
 
 
 Как запустить проект?<br>
